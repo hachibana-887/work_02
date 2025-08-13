@@ -1,0 +1,92 @@
+@charset "utf-8";
+p {
+    padding: 50px 20px;
+  }
+
+ul {
+    display: flex; /*横並びにする*/
+    list-style: none; /*リストの黒チョボをなくす*/
+    max-width: 960px; /*幅960px*/
+    flex-wrap: wrap; /*アイテムを折り返す_※flexがないと効かない*/
+    justify-content: center; /*中央配置_※justify-contentもflexがないと効かない*/
+    gap: 1rem; /*指定したサイズで余白をとる_※gapもflexがないと効かない*/
+}
+
+.square_blue {
+    width: 300px;
+    height: 300px;
+    background-color: blue;
+}
+
+.square_red {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+}
+
+.header-lists {
+    display: flex;
+    max-width: 960px;
+    justify-content: space-between; /*親要素のスペース内での均等配置*/
+    padding: 20px 0px;
+    background-color: lightskyblue;
+}
+
+.header-lists h1 {
+    justify-content: flex-start;
+    font-size: 30px;
+    padding: 0px 10px;
+}
+
+.header-lists ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* リストの区切り線 */
+.header-lists ul li::after {
+    content: "";
+    border: 1px solid #4750ff;
+}
+
+/* 最後の要素（“お問い合わせ”の後ろ）だけ線を引かない */
+.header-lists ul li:last-child::after {
+    border: none;
+}
+
+a {
+    padding-right: 1rem;
+}
+
+
+/*メディアクエリ_画面環境にあったデザインに切り替える機能*/
+@media screen and (max-width: 768px) {
+    .header-lists {
+        flex-direction: column; /*子要素を縦方向に配置*/
+        justify-content: start;
+    } 
+    
+    .header-lists h1 {
+        padding: 0px 0px 10px 10px;
+    }
+
+
+    .header-lists ul {
+        flex-direction: column; /*子要素を縦方向に配置*/
+        align-items: start;
+    }
+    
+    .header-lists li {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .header-lists ul li::after {
+        content: "";
+        border: 1px solid #4750ff;
+        display: flex;
+        flex-direction: column; /*子要素を縦方向に配置*/
+        width: 100%;
+    }
+}
